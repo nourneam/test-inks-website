@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Phishious</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .hero {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("https://images.unsplash.com/photo-1597135311540-8b20b290df54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1300&q=80")
+            no-repeat center center;
+        background-size: cover;
+        color: #fff;
+        padding: 80px 0;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .card-upload {
+        margin-top: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <!-- الشعار + اسم التطبيق -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="https://kma.edu.eg/wp-content/uploads/2021/12/cropped-logo-150x150.png"
+            alt="Logo"
+            style="height: 40px; margin-right: 10px;"
+          />
+          <span>My Phishious</span>
+        </a>
+        <!-- اسم الدكتور في الزاوية اليمنى -->
+        <span class="navbar-text ms-auto text-light">
+          Supervised by Dr. Walid
+        </span>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Analyze Your URLs and Emails Instantly</h1>
+        <p>
+          Detect phishing indicators, suspicious keywords, and more
+          with one click.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- بطاقة تحليل الروابط -->
+        <div class="col-md-8">
+          <div class="card-upload">
+            <h2 class="mb-4">Enter a URL to Analyze</h2>
+            <form action="/analyze" method="post">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  name="url_input"
+                  class="form-control"
+                  placeholder="https://example.com"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Analyze URL</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <!-- بطاقة تحليل البريد (EML) -->
+        <div class="col-md-8">
+          <div class="card-upload">
+            <h2 class="mb-4">Upload an EML File to Analyze</h2>
+            <form action="/analyze_mail" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <input
+                  type="file"
+                  name="eml_file"
+                  class="form-control"
+                  accept=".eml"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Analyze Mail</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 My Phishious. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analysis Results</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome للأيقونات -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #f2f2f2;
+      }
+      .card {
+        margin-top: 2rem;
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 50px;
+      }
+      .navbar-text {
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img
+            src="https://kma.edu.eg/wp-content/uploads/2021/12/cropped-logo-150x150.png"
+            alt="Logo"
+            style="height: 40px; margin-right: 10px;"
+          />
+          <span>My Phishious</span>
+        </a>
+        <span class="navbar-text text-light">
+          Supervised by Dr. Walid
+        </span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Analysis Results</h2>
+
+          <!-- تنبيه -->
+          {% if results.is_malicious %}
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="fas fa-exclamation-triangle fa-2x me-2"></i>
+            <div>
+              <strong>Warning!</strong> This URL is flagged as malicious (found in dataset).
+            </div>
+          </div>
+          {% else %}
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="fas fa-check-circle fa-2x me-2"></i>
+            <div>
+              <strong>Safe!</strong> This URL is not in our malicious dataset.
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- URL -->
+          <div class="mb-3">
+            <strong>URL:</strong> {{ results.url }}
+          </div>
+
+          <!-- HTTP Status Code -->
+          <div class="mb-3">
+            <strong>HTTP Status Code:</strong> {{ results.page_status }}
+          </div>
+
+          <!-- Suspicious Keywords -->
+          <div class="mb-3">
+            <strong>Suspicious Keywords Found:</strong>
+            {% if results.suspicious_found %}
+              <ul>
+                {% for kw in results.suspicious_found %}
+                  <li>{{ kw }}</li>
+                {% endfor %}
+              </ul>
+              <p class="text-danger">Potentially phishing based on these keywords.</p>
+            {% else %}
+              <p>No suspicious keywords found in page content.</p>
+            {% endif %}
+          </div>
+
+          <!-- Button to go back to home -->
+          <div>
+            <a href="/" class="btn btn-secondary">
+              <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 My Phishious. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </body>
+</html>
